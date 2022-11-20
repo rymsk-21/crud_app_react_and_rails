@@ -1,0 +1,4 @@
+client:
+  # Should we show a full-screen overlay in the browser
+  # when there are compiler errors or warnings?
+  overlay: false
