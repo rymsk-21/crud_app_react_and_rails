@@ -61,7 +61,7 @@ header h1:hover {
 }
 
 .eventList li:hover, a.active {
-  background: #f8e5ce;
+  background: #c3e6f8;
 }
 
 .eventList a {
@@ -74,7 +74,7 @@ header h1:hover {
 }
 
 .eventList h2 > a {
-  color: #236fff;
+  color: #0030aa;
   font-size: 15px;
   float: right;
   font-weight: normal;
@@ -107,7 +107,7 @@ input[type="checkbox"] {
 }
 
 button[type="submit"] {
-  background: #f57011;
+  background: #1170f5;
   border: none;
   padding: 5px 25px 8px;
   font-weight: 500;
