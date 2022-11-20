@@ -3,7 +3,6 @@ class Api::EventsController < ApplicationController
   
   def index
     @events = Event.all
-    sleep 5
     render json: @events
   end
 
