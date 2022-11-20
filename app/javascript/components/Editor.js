@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import EventList from "./EventList";
+import React, { useEffect, useState } from 'react';
+import Header from './Header';
+import EventList from './EventList';
 
 const Editor = () => {
   const [events, setEvents] = React.useState([]);
@@ -10,8 +10,8 @@ const Editor = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resonse = await window.fetch("/api/events");
-        if(!resonse.ok) throw Error(resonse.statusText);
+        const resonse = await window.fetch('/api/events');
+        if (!resonse.ok) throw Error(resonse.statusText);
         const data = await resonse.json();
         setEvents(data);
       } catch (error) {
@@ -21,14 +21,22 @@ const Editor = () => {
       setIsLoading(false);
     };
     fetchData();
-  },[]);
+  }, []);
 
-  return(
+  return (
     <>
-    <Header />
-    {isError && <p>Someting went wrong...</p>}
+      <Header />
+      {isError && <p>Someting went wrong...</p>}
+      {isLoding ? (
+        <p>Loading...</p>) : (
+        <>
+          <EventList events={events} />
 
-    {isLoding ? <p>Loading...</p> : <EventList events={events} />}
+          <Ruoters>
+            <Route path=":id" element={<Event events={events} />} />
+          </Ruoters>
+        </>
+      )};
     </>
   );
 };

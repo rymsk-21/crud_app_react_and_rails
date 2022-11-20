@@ -1,16 +1,20 @@
-import "@hotwired/turbo-rails"
-import "./controllers"
-import React, { StrictMode } from "react";
-import {createRoot} from "react-dom/client";
-import App from "./components/App";
+import '@hotwired/turbo-rails';
+import './controllers';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './components/App';
+import { BrowserRouter } from 'react-router-dom';
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 const root = createRoot(container);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEv;
+entListener('DOMContentLoaded', () => {
   root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>,
   );
 });
