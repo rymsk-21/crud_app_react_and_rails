@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Pikaday from 'pikaday';
 import PropTypes from 'prop-types';
-// import EventNotFound from './EventNotFound';
+import EventNotFound from './EventNotFound';
 import { formatDate, isEmptyObject, validateEvent } from '../helpers/helpers';
 
 import 'pikaday/css/pikaday.css';
@@ -20,11 +20,7 @@ const EventForm = ({ events, onSave }) => {
         host: '',
         published: false,
       };
-
-      const currEvent = id ?
-        events.find((e) => e.id === Number(id)) :
-        {};
-
+      const currEvent = id ? events.find((e) => e.id === Number(id)) : {};
       return { ...defaults, ...currEvent }
     },
     [events, id]
@@ -49,6 +45,8 @@ const EventForm = ({ events, onSave }) => {
       },
     });
 
+    // Return a cleanup function.
+    // React will call this prior to unmounting.
     return () => p.destroy();
   }, []);
 
@@ -186,3 +184,22 @@ const EventForm = ({ events, onSave }) => {
 };
 
 export default EventForm;
+
+EventForm.propTypes = {
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      event_type: PropTypes.string.isRequired,
+      event_date: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      speaker: PropTypes.string.isRequired,
+      host: PropTypes.string.isRequired,
+      published: PropTypes.bool.isRequired,
+    })
+  ),
+  onSave: PropTypes.func.isRequired,
+};
+
+EventForm.defaultProps = {
+  events: [],
+};
